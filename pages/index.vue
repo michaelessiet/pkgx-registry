@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { pkgxClient, convertSlashToColon } from "#imports"
 import type { PkgxIndexRes } from "#imports"
+import axios from "axios"
 
-let pkgList = (await pkgxClient.get<PkgxIndexRes[]>("/index.json")).data
-pkgList.forEach((item) => {
+let pkgList = (await useFetch<PkgxIndexRes[]>('/api/pkglist')).data.value
+
+pkgList?.forEach((item) => {
 	item.url = item.url.replace("https://pkgx.dev/pkgs/", "")
 })
-pkgList = pkgList.filter((item) => {
+pkgList = pkgList!.filter((item) => {
 	return item.type === "pkg"
 })
 </script>
