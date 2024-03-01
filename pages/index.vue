@@ -20,7 +20,7 @@ pkgList = pkgList!.filter((item) => {
 		<div class="flex flex-col gap-2">
 			<div v-for="(item, index) in pkgList" :key="item.url">
 				<NuxtLink :to="'/pkg/' + convertSlashToColon(item.url)">
-					<div class="rounded-md border-2 p-2 hover:to-blue-900 transition-all border-[#1B2F4E]">
+					<div class="rounded-md border-2 p-2 hover:bg-blue-900 transition-all border-[#1B2F4E]">
 						<h3>{{ item.title }}</h3>
 						<p>{{ item.description }}</p>
 					</div>
